@@ -12,15 +12,23 @@
         }
         #silhouette {
             width: 300px;
-            height: 500px;
+            height: 600px;
             background: #ccc;
             position: relative;
         }
         #character-form {
-            max-width: 400px;
+            max-width: 500px;
+        }
+        details {
+            margin-bottom: 10px;
+        }
+        summary {
+            cursor: pointer;
+            padding: 5px;
+            background: #f0f0f0;
         }
         .form-group {
-            margin-bottom: 15px;
+            margin: 10px 0 10px 20px;
         }
     </style>
 </head>
@@ -28,47 +36,74 @@
     <div id="silhouette"></div>
     <div id="character-form">
         <h2>Character Generator</h2>
-        <div class="form-group">
-            <label>Name: <span id="char-name"></span></label>
-        </div>
-        <div class="form-group">
-            <label>Height (cm): 
-                <input type="number" id="height" min="100" max="250">
-            </label>
-        </div>
-        <div class="form-group">
-            <label>Build: 
-                <select id="build">
-                    <option value="slim">Slim</option>
-                    <option value="average">Average</option>
-                    <option value="muscular">Muscular</option>
-                    <option value="heavy">Heavy</option>
-                </select>
-            </label>
-        </div>
-        <div class="form-group">
-            <label>Hair: 
-                <select id="hair">
-                    <option value="short">Short</option>
-                    <option value="medium">Medium</option>
-                    <option value="long">Long</option>
-                    <option value="bald">Bald</option>
-                </select>
-            </label>
-        </div>
-        <div class="form-group">
-            <label>Gender: 
-                <select id="gender">
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="other">Other</option>
-                </select>
-            </label>
-        </div>
+        <div>Name: <span id="char-name"></span></div>
+
+        <details open>
+            <summary>1. Physical Attributes</summary>
+            <div class="form-group"><label>Height (cm): <input type="number" id="height" min="100" max="250"></label></div>
+            <div class="form-group"><label>Weight (kg): <input type="number" id="weight" min="30" max="200"></label></div>
+            <div class="form-group"><label>Body Type: <select id="body-type"><option value="slim">Slim</option><option value="average">Average</option><option value="muscular">Muscular</option><option value="heavy">Heavy</option></select></label></div>
+            <div class="form-group"><label>Facial Features: <input type="text" id="facial-features"></label></div>
+            <div class="form-group"><label>Age: <input type="number" id="age" min="1" max="120"></label></div>
+            <div class="form-group"><label>Hair Color: <input type="text" id="hair-color"></label></div>
+            <div class="form-group"><label>Eye Color: <input type="text" id="eye-color"></label></div>
+            <div class="form-group"><label>Clothing Style: <input type="text" id="clothing-style"></label></div>
+            <div class="form-group"><label>Distinguishing Features: <input type="text" id="dist-features"></label></div>
+        </details>
+
+        <details>
+            <summary>2. Personality Traits</summary>
+            <div class="form-group"><label>Social: <select id="social"><option value="introvert">Introvert</option><option value="extrovert">Extrovert</option></select></label></div>
+            <div class="form-group"><label>Outlook: <select id="outlook"><option value="optimistic">Optimistic</option><option value="pessimistic">Pessimistic</option></select></label></div>
+            <div class="form-group"><label>Approach: <select id="approach"><option value="brave">Brave</option><option value="cautious">Cautious</option></select></label></div>
+            <div class="form-group"><label>Decision: <select id="decision"><option value="logical">Logical</option><option value="emotional">Emotional</option></select></label></div>
+            <div class="form-group"><label>Tone: <select id="tone"><option value="serious">Serious</option><option value="playful">Playful</option></select></label></div>
+        </details>
+
+        <details>
+            <summary>3. Motivations & Goals</summary>
+            <div class="form-group"><label>Desires: <input type="text" id="desires"></label></div>
+            <div class="form-group"><label>Fears: <input type="text" id="fears"></label></div>
+            <div class="form-group"><label>Philosophy: <input type="text" id="philosophy"></label></div>
+            <div class="form-group"><label>Obstacles: <input type="text" id="obstacles"></label></div>
+        </details>
+
+        <details>
+            <summary>4. Skills & Abilities</summary>
+            <div class="form-group"><label>Intelligence: <input type="text" id="intelligence"></label></div>
+            <div class="form-group"><label>Combat Skills: <input type="text" id="combat-skills"></label></div>
+            <div class="form-group"><label>Magic/Powers: <input type="text" id="magic-powers"></label></div>
+            <div class="form-group"><label>Talents: <input type="text" id="talents"></label></div>
+        </details>
+
+        <details>
+            <summary>5. Backstory & Relationships</summary>
+            <div class="form-group"><label>Family: <input type="text" id="family"></label></div>
+            <div class="form-group"><label>Romance: <input type="text" id="romance"></label></div>
+            <div class="form-group"><label>Friends: <input type="text" id="friends"></label></div>
+            <div class="form-group"><label>Enemies: <input type="text" id="enemies"></label></div>
+            <div class="form-group"><label>Trauma: <input type="text" id="trauma"></label></div>
+        </details>
+
+        <details>
+            <summary>6. Moral Compass & Flaws</summary>
+            <div class="form-group"><label>Ethics: <input type="text" id="ethics"></label></div>
+            <div class="form-group"><label>Strengths: <input type="text" id="strengths"></label></div>
+            <div class="form-group"><label>Weaknesses: <input type="text" id="weaknesses"></label></div>
+            <div class="form-group"><label>Vices: <input type="text" id="vices"></label></div>
+            <div class="form-group"><label>Regrets: <input type="text" id="regrets"></label></div>
+        </details>
+
+        <details>
+            <summary>7. Dialogue & Mannerisms</summary>
+            <div class="form-group"><label>Speech: <input type="text" id="speech"></label></div>
+            <div class="form-group"><label>Catchphrases: <input type="text" id="catchphrases"></label></div>
+            <div class="form-group"><label>Body Language: <input type="text" id="body-language"></label></div>
+            <div class="form-group"><label>Gestures: <input type="text" id="gestures"></label></div>
+        </details>
     </div>
 
     <script>
-        // Random name generator
         const firstNames = ['Alex', 'Jordan', 'Taylor', 'Morgan', 'Casey', 'Riley'];
         const lastNames = ['Smith', 'Jones', 'Brown', 'Davis', 'Wilson', 'Clark'];
         
@@ -76,39 +111,78 @@
             return arr[Math.floor(Math.random() * arr.length)];
         }
 
-        // Initial random character
         function generateRandomCharacter() {
-            const name = `${getRandomItem(firstNames)} ${getRandomItem(lastNames)}`;
-            document.getElementById('char-name').textContent = name;
+            // Basic Info
+            document.getElementById('char-name').textContent = `${getRandomItem(firstNames)} ${getRandomItem(lastNames)}`;
             
+            // Physical Attributes
             document.getElementById('height').value = Math.floor(Math.random() * (250 - 100 + 1)) + 100;
-            document.getElementById('build').value = getRandomItem(['slim', 'average', 'muscular', 'heavy']);
-            document.getElementById('hair').value = getRandomItem(['short', 'medium', 'long', 'bald']);
-            document.getElementById('gender').value = getRandomItem(['male', 'female', 'other']);
-            
+            document.getElementById('weight').value = Math.floor(Math.random() * (200 - 30 + 1)) + 30;
+            document.getElementById('body-type').value = getRandomItem(['slim', 'average', 'muscular', 'heavy']);
+            document.getElementById('facial-features').value = getRandomItem(['sharp', 'soft', 'rugged', 'delicate']) + ' features';
+            document.getElementById('age').value = Math.floor(Math.random() * (120 - 1 + 1)) + 1;
+            document.getElementById('hair-color').value = getRandomItem(['brown', 'black', 'blonde', 'red']);
+            document.getElementById('eye-color').value = getRandomItem(['blue', 'green', 'brown', 'hazel']);
+            document.getElementById('clothing-style').value = getRandomItem(['casual', 'formal', 'bohemian', 'punk']);
+            document.getElementById('dist-features').value = getRandomItem(['scar on cheek', 'tattoo on arm', 'piercing', 'none']);
+
+            // Personality Traits
+            document.getElementById('social').value = getRandomItem(['introvert', 'extrovert']);
+            document.getElementById('outlook').value = getRandomItem(['optimistic', 'pessimistic']);
+            document.getElementById('approach').value = getRandomItem(['brave', 'cautious']);
+            document.getElementById('decision').value = getRandomItem(['logical', 'emotional']);
+            document.getElementById('tone').value = getRandomItem(['serious', 'playful']);
+
+            // Motivations & Goals
+            document.getElementById('desires').value = getRandomItem(['love', 'success', 'revenge', 'peace']);
+            document.getElementById('fears').value = getRandomItem(['failure', 'abandonment', 'death', 'unknown']);
+            document.getElementById('philosophy').value = getRandomItem(['"Live and let live"', '"The end justifies the means"', '"Knowledge is power"']);
+            document.getElementById('obstacles').value = getRandomItem(['poverty', 'rival', 'self-doubt', 'curse']);
+
+            // Skills & Abilities
+            document.getElementById('intelligence').value = getRandomItem(['street-smart', 'book-smart', 'average', 'genius']);
+            document.getElementById('combat-skills').value = getRandomItem(['untrained', 'brawler', 'martial artist', 'none']);
+            document.getElementById('magic-powers').value = getRandomItem(['none', 'fire magic', 'telekinesis', 'healing']);
+            document.getElementById('talents').value = getRandomItem(['music', 'art', 'mechanics', 'persuasion']);
+
+            // Backstory & Relationships
+            document.getElementById('family').value = getRandomItem(['orphaned', 'large family', 'only child', 'noble lineage']);
+            document.getElementById('romance').value = getRandomItem(['single', 'married', 'widowed', 'complicated']);
+            document.getElementById('friends').value = getRandomItem(['loyal best friend', 'small group', 'lone wolf', 'betrayed']);
+            document.getElementById('enemies').value = getRandomItem(['none', 'old rival', 'criminal boss', 'former friend']);
+            document.getElementById('trauma').value = getRandomItem(['none', 'war', 'loss of loved one', 'betrayal']);
+
+            // Moral Compass & Flaws
+            document.getElementById('ethics').value = getRandomItem(['lawful', 'chaotic', 'neutral', 'self-made rules']);
+            document.getElementById('strengths').value = getRandomItem(['loyalty', 'kindness', 'resilience', 'ambition']);
+            document.getElementById('weaknesses').value = getRandomItem(['pride', 'impulsivity', 'recklessness', 'selfishness']);
+            document.getElementById('vices').value = getRandomItem(['none', 'alcohol', 'gambling', 'arrogance']);
+            document.getElementById('regrets').value = getRandomItem(['none', 'lost love', 'past betrayal', 'missed opportunity']);
+
+            // Dialogue & Mannerisms
+            document.getElementById('speech').value = getRandomItem(['formal', 'slang', 'poetic', 'stuttering']);
+            document.getElementById('catchphrases').value = getRandomItem(['"Trust me"', '"Not again"', '"I got this"', 'none']);
+            document.getElementById('body-language').value = getRandomItem(['confident', 'nervous', 'relaxed', 'tense']);
+            document.getElementById('gestures').value = getRandomItem(['none', 'fidgeting', 'hand waving', 'hair touching']);
+
             updateSilhouette();
         }
 
-        // Update silhouette based on attributes
         function updateSilhouette() {
             const silhouette = document.getElementById('silhouette');
             const height = document.getElementById('height').value;
-            const build = document.getElementById('build').value;
-            const hair = document.getElementById('hair').value;
-            const gender = document.getElementById('gender').value;
+            const bodyType = document.getElementById('body-type').value;
 
-            // Reset silhouette
             silhouette.innerHTML = '';
-            silhouette.style.height = `${height * 2}px`; // Scale height for visibility
-            
-            // Basic body shape
+            silhouette.style.height = `${height * 2}px`;
+
             const body = document.createElement('div');
             body.style.position = 'absolute';
             body.style.bottom = '0';
             body.style.background = '#666';
             
             let width;
-            switch(build) {
+            switch(bodyType) {
                 case 'slim': width = 80; break;
                 case 'average': width = 100; break;
                 case 'muscular': width = 120; break;
@@ -119,35 +193,13 @@
             body.style.left = '50%';
             body.style.transform = 'translateX(-50%)';
             silhouette.appendChild(body);
-
-            // Hair
-            if (hair !== 'bald') {
-                const hairDiv = document.createElement('div');
-                hairDiv.style.position = 'absolute';
-                hairDiv.style.top = '0';
-                hairDiv.style.background = '#333';
-                hairDiv.style.width = `${width * 0.8}px`;
-                hairDiv.style.left = '50%';
-                hairDiv.style.transform = 'translateX(-50%)';
-                
-                let hairHeight;
-                switch(hair) {
-                    case 'short': hairHeight = 30; break;
-                    case 'medium': hairHeight = 60; break;
-                    case 'long': hairHeight = 100; break;
-                }
-                hairDiv.style.height = `${hairHeight}px`;
-                silhouette.appendChild(hairDiv);
-            }
         }
 
-        // Event listeners for form changes
         const inputs = document.querySelectorAll('#character-form input, #character-form select');
         inputs.forEach(input => {
             input.addEventListener('change', updateSilhouette);
         });
 
-        // Generate initial character on page load
         window.onload = generateRandomCharacter;
     </script>
 </body>
