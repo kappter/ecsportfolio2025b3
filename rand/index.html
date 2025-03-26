@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Character Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+        }
+        #silhouette {
+            width: 300px;
+            height: 500px;
+            background: #ccc;
+            position: relative;
+        }
+        #character-form {
+            max-width: 400px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div id="silhouette"></div>
+    <div id="character-form">
+        <h2>Character Generator</h2>
+        <div class="form-group">
+            <label>Name: <span id="char-name"></span></label>
+        </div>
+        <div class="form-group">
+            <label>Height (cm): 
+                <input type="number" id="height" min="100" max="250">
+            </label>
+        </div>
+        <div class="form-group">
+            <label>Build: 
+                <select id="build">
+                    <option value="slim">Slim</option>
+                    <option value="average">Average</option>
+                    <option value="muscular">Muscular</option>
+                    <option value="heavy">Heavy</option>
+                </select>
+            </label>
+        </div>
+        <div class="form-group">
+            <label>Hair: 
+                <select id="hair">
+                    <option value="short">Short</option>
+                    <option value="medium">Medium</option>
+                    <option value="long">Long</option>
+                    <option value="bald">Bald</option>
+                </select>
+            </label>
+        </div>
+        <div class="form-group">
+            <label>Gender: 
+                <select id="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </label>
+        </div>
+    </div>
+
+    <script>
+        // Random name generator
+        const firstNames = ['Alex', 'Jordan', 'Taylor', 'Morgan', 'Casey', 'Riley'];
+        const lastNames = ['Smith', 'Jones', 'Brown', 'Davis', 'Wilson', 'Clark'];
+        
+        function getRandomItem(arr) {
+            return arr[Math.floor(Math.random() * arr.length)];
+        }
+
+        // Initial random character
+        function generateRandomCharacter() {
+            const name = `${getRandomItem(firstNames)} ${getRandomItem(lastNames)}`;
+            document.getElementById('char-name').textContent = name;
+            
+            document.getElementById('height').value = Math.floor(Math.random() * (250 - 100 + 1)) + 100;
+            document.getElementById('build').value = getRandomItem(['slim', 'average', 'muscular', 'heavy']);
+            document.getElementById('hair').value = getRandomItem(['short', 'medium', 'long', 'bald']);
+            document.getElementById('gender').value = getRandomItem(['male', 'female', 'other']);
+            
+            updateSilhouette();
+        }
+
+        // Update silhouette based on attributes
+        function updateSilhouette() {
+            const silhouette = document.getElementById('silhouette');
+            const height = document.getElementById('height').value;
+            const build = document.getElementById('build').value;
+            const hair = document.getElementById('hair').value;
+            const gender = document.getElementById('gender').value;
+
+            // Reset silhouette
+            silhouette.innerHTML = '';
+            silhouette.style.height = `${height * 2}px`; // Scale height for visibility
+            
+            // Basic body shape
+            const body = document.createElement('div');
+            body.style.position = 'absolute';
+            body.style.bottom = '0';
+            body.style.background = '#666';
+            
+            let width;
+            switch(build) {
+                case 'slim': width = 80; break;
+                case 'average': width = 100; break;
+                case 'muscular': width = 120; break;
+                case 'heavy': width = 140; break;
+            }
+            body.style.width = `${width}px`;
+            body.style.height = `${height * 1.5}px`;
+            body.style.left = '50%';
+            body.style.transform = 'translateX(-50%)';
+            silhouette.appendChild(body);
+
+            // Hair
+            if (hair !== 'bald') {
+                const hairDiv = document.createElement('div');
+                hairDiv.style.position = 'absolute';
+                hairDiv.style.top = '0';
+                hairDiv.style.background = '#333';
+                hairDiv.style.width = `${width * 0.8}px`;
+                hairDiv.style.left = '50%';
+                hairDiv.style.transform = 'translateX(-50%)';
+                
+                let hairHeight;
+                switch(hair) {
+                    case 'short': hairHeight = 30; break;
+                    case 'medium': hairHeight = 60; break;
+                    case 'long': hairHeight = 100; break;
+                }
+                hairDiv.style.height = `${hairHeight}px`;
+                silhouette.appendChild(hairDiv);
+            }
+        }
+
+        // Event listeners for form changes
+        const inputs = document.querySelectorAll('#character-form input, #character-form select');
+        inputs.forEach(input => {
+            input.addEventListener('change', updateSilhouette);
+        });
+
+        // Generate initial character on page load
+        window.onload = generateRandomCharacter;
+    </script>
+</body>
+</html>
